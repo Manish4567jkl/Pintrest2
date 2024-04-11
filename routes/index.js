@@ -3,6 +3,7 @@ var router = express.Router();
 const userModel = require('./users');
 const passport = require('passport');
 const localStratergy = require('passport-local');
+const upload = require('./multer')
 passport.use(new localStratergy(userModel.authenticate()))
 /* GET home page. */
 router.get('/login', function(req, res, next) {
@@ -50,6 +51,10 @@ router.get('/logout' , function(res,req,next){
 
 router.get('/edit' , function(req,res){
   res.render('edit')
+})
+
+router.post('/fileupload' ,isLoggedIn, upload.single("image") ,(req,res)=>{
+    res.send('uploaded')
 })
 
 
