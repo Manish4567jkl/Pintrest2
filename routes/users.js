@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema({
   password : String,
   profileImage : String,
   contact : Number,
-  boards :{
+  boards :{ 
     type : Array,
     default : []
   },
